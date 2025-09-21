@@ -1,0 +1,58 @@
+{
+  "categories": [
+    {
+      "name": "Clothes"
+    },
+    {
+      "name": "Shoes"
+    }
+  ],
+  "items": [
+    {
+      "category": "Shoes",
+      "name": "Nike Shox",
+      "price": 100.5
+    },
+    {
+      "category": "Shoes",
+      "name": "Nike Air",
+      "price": 106.0
+    },
+    {
+      "category": "Clothes",
+      "name": "T-Shirt Blue",
+      "price": 20.0
+    },
+    {
+      "category": "Clothes",
+      "name": "T-Shirt Blue",
+      "price": 20.0
+    }
+  ],
+  "shoppingList": [
+    {
+      "name": "MyList",
+      "category": "Shoes",
+      "item": "Nike Shox",
+      "quantity": 2
+    },
+    {
+      "name": "MyList",
+      "category": "Shoes",
+      "item": "Nike Air",
+      "quantity": 3
+    },
+    {
+      "name": "MyList3",
+      "category": "Shoesss",
+      "item": "Nike Air",
+      "quantity": 3
+    },
+    {
+      "name": "MyList3",
+      "category": "Shoes",
+      "item": "Nike Air",
+      "quantity": 3
+    }
+  ]
+}

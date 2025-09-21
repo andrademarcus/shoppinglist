@@ -22,13 +22,19 @@ public class ItemController {
     }
 
     @GetMapping("/")
-    @Operation(description = "Return all items")
+    @Operation(
+            summary = "List items",
+            description = "Returns all items."
+    )
     public ResponseEntity<List<ItemResponse>> getAllItems() {
         return ResponseEntity.ok(itemService.findAll());
     }
 
     @GetMapping("/{id}")
-    @Operation(description = "Return a item from a given id")
+    @Operation(
+            summary = "Get item",
+            description = "Returns a item by ID, including its category."
+    )
     public ResponseEntity<ItemResponse> getItemById(@PathVariable Long id) {
         return ResponseEntity.ok(itemService.findById(id));
     }

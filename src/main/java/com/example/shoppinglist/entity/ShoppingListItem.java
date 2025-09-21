@@ -6,9 +6,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
 
@@ -30,18 +30,11 @@ public class ShoppingListItem {
 
     private Integer quantity;
 
+    @CreationTimestamp
     private Instant createdAt;
+
+    @UpdateTimestamp
     private Instant updatedAt;
-
-    @PrePersist
-    public void prePersist() {
-        this.createdAt = Instant.now();
-    }
-
-    @PreUpdate
-    public void preUpdate() {
-        this.updatedAt = Instant.now();
-    }
 
     public Long getId() {
         return id;

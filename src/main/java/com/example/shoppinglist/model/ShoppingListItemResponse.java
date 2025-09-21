@@ -1,11 +1,21 @@
 package com.example.shoppinglist.model;
 
-import java.math.BigDecimal;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
-public record ShoppingListItemResponse(Long id, String name, BigDecimal price, Integer quantity, CategoryResponse category) {
+import java.math.BigDecimal;
+import java.time.Instant;
+
+public record ShoppingListItemResponse(ItemResponse item,
+                                       Integer quantity,
+
+                                       @JsonFormat(shape = JsonFormat.Shape.STRING)
+                                       Instant createdAt,
+
+                                       @JsonFormat(shape = JsonFormat.Shape.STRING)
+                                       Instant updatedAt) {
 
     public BigDecimal getCost() {
-        return price.multiply(BigDecimal.valueOf(quantity));
+        return item.price().multiply(BigDecimal.valueOf(quantity));
     }
 
 }

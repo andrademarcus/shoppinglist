@@ -5,12 +5,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
 import java.util.ArrayList;
@@ -29,7 +27,10 @@ public class ShoppingList {
     @OneToMany(mappedBy = "shoppingList", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ShoppingListItem> items = new ArrayList<>();
 
+    @CreationTimestamp
     private Instant createdAt;
+
+    @UpdateTimestamp
     private Instant updatedAt;
 
     public ShoppingList() {
@@ -38,16 +39,6 @@ public class ShoppingList {
 
     public ShoppingList(String name) {
         this.name = name;
-    }
-
-    @PrePersist
-    public void prePersist() {
-        this.createdAt = Instant.now();
-    }
-
-    @PreUpdate
-    public void preUpdate() {
-        this.updatedAt = Instant.now();
     }
 
     public Long getId() {

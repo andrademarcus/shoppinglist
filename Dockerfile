@@ -1,24 +1,13 @@
-FROM amazoncorretto:17.0.16-al2023
-
+# ---- Build stage ----
+FROM gradle:8.8-jdk17 AS build
 WORKDIR /app
-
-# cache deps
-COPY gradlew settings.gradle build.gradle gradle/ ./
-RUN chmod +x gradlew && ./gradlew --version
-
-# build
+COPY build.gradle settings.gradle ./
 COPY src ./src
-RUN ./gradlew clean bootJar --no-daemon
+RUN gradle clean bootJar --no-daemon
 
 # ---- Runtime stage ----
-FROM eclipse-temurin:17-jre-alpine
+FROM eclipse-temurin:17-jre
 WORKDIR /app
-RUN addgroup -S spring && adduser -S spring -G spring
-USER spring
-
-# copy fat jar
 COPY --from=build /app/build/libs/*-*.jar app.jar
-
 EXPOSE 8080
-ENV JAVA_OPTS=""
-ENTRYPOINT ["sh","-c","java $JAVA_OPTS -jar app.jar"]
+ENTRYPOINT ["java","-jar","/app/app.jar"]

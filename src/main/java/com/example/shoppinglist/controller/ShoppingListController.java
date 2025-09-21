@@ -23,7 +23,7 @@ public class ShoppingListController {
         this.shoppingListService = shoppingListService;
     }
 
-    @GetMapping("/")
+    @GetMapping
     @Operation(
             summary = "List shopping lists",
             description = "Returns all shopping lists with their items."

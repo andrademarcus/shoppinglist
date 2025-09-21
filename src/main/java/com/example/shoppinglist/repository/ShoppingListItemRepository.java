@@ -1,6 +1,5 @@
 package com.example.shoppinglist.repository;
 
-import com.example.shoppinglist.entity.ShoppingList;
 import com.example.shoppinglist.entity.ShoppingListItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
